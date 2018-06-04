@@ -1,0 +1,65 @@
+﻿@model InauVendingServer.Models.MachineSpot
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Editar</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>MachineSpot</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="MachineSpotId" />
+        <div class="form-group">
+            <label asp-for="MachineSpotStartTime" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="MachineSpotStartTime" class="form-control" />
+                <span asp-validation-for="MachineSpotStartTime" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MachineSpotEndTime" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="MachineSpotEndTime" class="form-control" />
+                <span asp-validation-for="MachineSpotEndTime" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MachineSpotName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="MachineSpotName" class="form-control" />
+                <span asp-validation-for="MachineSpotName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MachineSpotAddress" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="MachineSpotAddress" class="form-control" />
+                <span asp-validation-for="MachineSpotAddress" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MachineId" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="MachineId" class="form-control" asp-items="ViewBag.MachineId"></select>
+                <span asp-validation-for="MachineId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">Voltar para lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

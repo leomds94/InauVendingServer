@@ -1,0 +1,54 @@
+﻿@model InauVendingServer.Models.MachineSpot
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Excluir</h2>
+
+<h3>Você tem certeza que deseja excluir este item?</h3>
+<div>
+    <h4>MachineSpot</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="MachineSpotId" />
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineSpotStartTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MachineSpotStartTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineSpotEndTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MachineSpotEndTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineSpotName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MachineSpotName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineSpotAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MachineSpotAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Machine)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Machine.MachineAddress)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default" /> |
+            <a asp-action="Index" class="btn btn-primary">Voltar para lista</a>
+        </div>
+    </form>
+</div>

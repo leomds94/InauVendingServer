@@ -1,0 +1,86 @@
+﻿@model InauVendingServer.Models.Machine
+
+<div class="modal fade" id="MachineAddModals">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Cadastrar Máquina
+            </div>
+            <div class="modal-body">
+                    <form asp-action="Create">
+                        <div class="form-horizontal">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="MachineName" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="MachineName" class="form-control" />
+                                    <span asp-validation-for="MachineName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MachineAddress" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="MachineAddress" class="form-control" />
+                                    <span asp-validation-for="MachineAddress" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MachineManufacturer" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="MachineManufacturer" class="form-control" />
+                                    <span asp-validation-for="MachineManufacturer" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MachineModel" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="MachineModel" class="form-control" />
+                                    <span asp-validation-for="MachineModel" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MachineType" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="MachineType" class="form-control" />
+                                    <span asp-validation-for="MachineType" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MachineDimension" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="MachineDimension" class="form-control" />
+                                    <span asp-validation-for="MachineDimension" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MachineVoltage" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="MachineVoltage" class="form-control" />
+                                    <span asp-validation-for="MachineVoltage" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="OwnerId" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <select asp-for="OwnerId" class="form-control" asp-items="ViewBag.OwnerId">
+                                        <option></option>
+                                        <option value="addNovo">Adicionar Novo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Criar" class="btn btn-default" />
+                                    <a data-dismiss="modal" class="btn btn-primary">Voltar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

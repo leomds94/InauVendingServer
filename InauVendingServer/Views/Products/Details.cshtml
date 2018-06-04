@@ -1,0 +1,72 @@
+﻿@model InauVendingServer.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Produto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductType)
+        </dd>
+    </dl>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Máquinas
+                    </a>
+                </h4>
+            </div>
+
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <th>Nome da Máquina</th>
+                            <th>Modelo</th>
+                            <th>Endereço</th>
+                            <th>Proprietário</th>
+                        </tr>
+                        @foreach (var item in Model.ProductMachines)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Machine.MachineName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Machine.MachineModel)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Machine.MachineAddress)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Machine.Owner.OwnerName)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-default" asp-route-id="@Model.ProductId">Editar</a>
+    <a asp-action="Index" class="btn btn-primary">Voltar para lista</a>
+</div>

@@ -1,0 +1,73 @@
+﻿@model InauVendingServer.Models.Machine
+
+<div class="modal fade" id="MachineDeleteModals">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Você tem certeza que deseja excluir esta Máquina?
+            </div>
+            <div class="modal-body">
+                <div>
+                    <dl class="dl-horizontal">
+                        <input type="hidden" asp-for="MachineId" />
+                        <dt>
+                            @Html.DisplayNameFor(model => model.MachineName)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.MachineName)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.MachineAddress)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.MachineAddress)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.MachineManufacturer)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.MachineManufacturer)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.MachineModel)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.MachineModel)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.MachineType)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.MachineType)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.MachineDimension)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.MachineDimension)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.MachineVoltage)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.MachineVoltage)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Owner)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Owner.OwnerAddress)
+                        </dd>
+                    </dl>
+
+                    <form asp-action="Delete">
+                        <div class="form-actions no-color">
+                            <button type="submit"  data-dismiss="modal" class="btn btn-default" >Excluir</button>
+                            <button class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

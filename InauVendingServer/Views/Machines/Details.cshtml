@@ -1,0 +1,199 @@
+﻿@model InauVendingServer.Models.Machine
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Máquina</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MachineName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MachineAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineManufacturer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MachineManufacturer)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineModel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MachineModel)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MachineType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineDimension)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MachineDimension)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineVoltage)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MachineVoltage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Owner.OwnerName)
+        </dd>
+    </dl>
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Produtos
+                    </a>
+                </h4>
+            </div>
+
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <button data-id="@Model.MachineId" class="btn btn-success ProductMachineAdd">Adicionar Produto</button><br /><br />
+                    <table class="table">
+                        <tr>
+                            <th>Nome do Produto</th>
+                            <th>Quantidade Disponível</th>
+                            <th>Preço do Produto</th>
+                        </tr>
+                        @foreach (var item in Model.ProductMachines)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Product.ProductName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ProductMachineQty)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ProductMachinePrice)
+                                </td>
+                                <td>
+                                    <button data-id="@item.ProductMachineId" class="btn btn-success SupplyAdd">Abastecer Produto</button>
+                                    <button data-id="@item.ProductMachineId" class="btn btn-danger ProductMachineDelete">X</button>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        @Html.DisplayNameFor(model => model.Maintenances)
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    <button data-id="@Model.MachineId" class="btn btn-success" id="MaintenanceAdd">Adicionar Manutenção</button><br /><br />
+                    <table class="table">
+                        <tr>
+                            <th>Horário da Manutenção</th>
+                            <th>Tipo de Manutenção</th>
+                            <th>Custo</th>
+                        </tr>
+                        @foreach (var item in Model.Maintenances)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaintenanceTime)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Maintenance.MaintenanceType)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaintenanceCost)
+                                </td>
+                                <td>
+                                    <button data-id="@item.MachineMaintenanceId" class="btn btn-danger MaintenanceDelete">X</button>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Abastecimentos
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    <button class="btn btn-success" id="SupplyAdd2">Adicionar Abastecimento</button><br /><br />
+                    <table class="table">
+                        <tr>
+                            <th>Horário do Abastecimento</th>
+                            <th>Nome do Produto</th>
+                            <th>Quantidade Abastecida</th>
+                        </tr>
+                        @foreach (var item in Model.ProductMachines)
+                        {
+                            foreach (var supply in item.Supplies)
+                            {
+                                if (supply.ProductMachine.MachineId == Model.MachineId)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => supply.SupplyTime)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => supply.ProductMachine.Product.ProductName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => supply.SupplyQty)
+                                        </td>
+                                        <td>
+                                            <button data-id="@supply.SupplyId" class="btn btn-danger SupplyDelete">X</button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-default" asp-route-id="@Model.MachineId">Editar</a>
+    <a asp-action="Index" class="btn btn-primary">Voltar para lista</a>
+</div>
+
+<div id="ProductMachineAddModal"></div>
+<div id="ProductMachineDeleteModal"></div>
+<div id="MaintenanceAddModal"></div>
+<div id="MaintenanceDeleteModal"></div>
+<div id="SupplyAddModal"></div>
+<div id="SupplyDeleteModal"></div>

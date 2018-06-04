@@ -1,0 +1,25 @@
+﻿@model InauVendingServer.Models.Maintenance
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Maintenance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaintenanceType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaintenanceType)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-default" asp-route-id="@Model.MaintenanceId">Editar</a>
+    <a asp-action="Index" class="btn btn-primary">Voltar para lista</a>
+</div>

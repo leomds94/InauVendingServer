@@ -1,0 +1,46 @@
+﻿@model IEnumerable<InauVendingServer.Models.Product>
+
+@{
+    ViewData["Title"] = "Sumario Produtos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Produtos</h2>
+
+<p>
+    <button class="btn btn-success" id="ProductAdd">Cadastrar novo</button>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductType)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductType)
+            </td>
+            <td>
+                <button class="btn btn-default ProductEdit" data-id="@item.ProductId">Editar</button>
+                <a asp-action="Details" class="btn btn-info" asp-route-id="@item.ProductId">Detalhes</a>
+                <button class="btn btn-danger ProductDelete" data-id="@item.ProductId">Excluir</button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div id="ProductAddModal"></div>
+<div id="ProductDeleteModal"></div>
+<div id="ProductEditModal"></div>

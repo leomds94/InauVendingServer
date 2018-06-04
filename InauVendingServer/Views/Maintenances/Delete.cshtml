@@ -1,0 +1,30 @@
+﻿@model InauVendingServer.Models.Maintenance
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Excluir</h2>
+
+<h3>Você tem certeza que deseja excluir este item?</h3>
+<div>
+    <h4>Maintenance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="MaintenanceId" />
+        <dt>
+            @Html.DisplayNameFor(model => model.MaintenanceType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaintenanceType)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default" /> |
+            <a asp-action="Index" class="btn btn-primary">Voltar para lista</a>
+        </div>
+    </form>
+</div>

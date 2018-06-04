@@ -1,0 +1,58 @@
+﻿@model InauVendingServer.Models.ProductMachine
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Editar</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Produto para Máquina</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="ProductMachineId" />
+        <div class="form-group">
+            <label asp-for="ProductMachineQty" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ProductMachineQty" class="form-control" />
+                <span asp-validation-for="ProductMachineQty" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ProductId" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="ProductId" class="form-control" asp-items="ViewBag.ProductId"></select>
+                <span asp-validation-for="ProductId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MachineId" class="control-label col-md-2"></label>
+            <div class="col-md-10">
+                <select asp-for="MachineId" class="form-control" asp-items="ViewBag.MachineId"></select>
+                <span asp-validation-for="MachineId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ProductMachinePrice" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ProductMachinePrice" class="form-control" />
+                <span asp-validation-for="ProductMachinePrice" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">Voltar para lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

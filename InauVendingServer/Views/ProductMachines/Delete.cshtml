@@ -1,0 +1,45 @@
+﻿@model InauVendingServer.Models.ProductMachine
+
+<div class="modal fade" id="ProductMachineDeleteModals">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Você tem certeza que deseja excluir este produto da máquina?
+            </div>
+            <div class="modal-body">
+                <div>
+                    <dl class="dl-horizontal">
+                        <input type="hidden" asp-for="ProductMachineId" />
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Product)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Product.ProductName)
+                        </dd>
+                        <dt>
+                            Qtd disponível
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.ProductMachineQty)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ProductMachinePrice)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.ProductMachinePrice)
+                        </dd>
+
+                    </dl>
+
+                    <form asp-action="Delete">
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Excluir" class="btn btn-default" />
+                            <button class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,43 @@
+﻿@model InauVendingServer.Models.Supply
+
+<div class="modal fade" id="SupplyDeleteModals">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Você tem certeza que deseja excluir este Abastecimento?
+            </div>
+            <div class="modal-body">
+                <div>
+                    <dl class="dl-horizontal">
+                        <input type="hidden" asp-for="SupplyId" />
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ProductMachine.Product.ProductName)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.ProductMachine.Product.ProductName)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SupplyQty)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.SupplyQty)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SupplyTime)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.SupplyTime)
+                        </dd>
+                    </dl>
+
+                    <form asp-action="Delete">
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Excluir" class="btn btn-default" />
+                            <button class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

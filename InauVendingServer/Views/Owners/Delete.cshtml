@@ -1,0 +1,36 @@
+﻿@model InauVendingServer.Models.Owner
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Excluir</h2>
+
+<h3>Você tem certeza que deseja excluir este item?</h3>
+<div>
+    <h4>Owner</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="OwnerId" />
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OwnerName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OwnerAddress)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default" /> |
+            <a asp-action="Index" class="btn btn-primary">Voltar para lista</a>
+        </div>
+    </form>
+</div>

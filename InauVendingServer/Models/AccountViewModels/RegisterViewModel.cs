@@ -9,6 +9,18 @@ namespace InauVendingServer.Models.AccountViewModels
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Nome de usuário")]
+        public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "Primeiro Nome")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Último Nome")]
+        public string LastName { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

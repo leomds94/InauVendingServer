@@ -1,0 +1,43 @@
+﻿@model InauVendingServer.Models.MachineMaintenance
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Manutenção de Máquina</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaintenanceTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaintenanceTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MaintenanceCost)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaintenanceCost)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Machine)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Machine.MachineAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Maintenance)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Maintenance.MaintenanceType)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-default" asp-route-id="@Model.MachineMaintenanceId">Editar</a>
+    <a asp-action="Index" class="btn btn-primary">Voltar para lista</a>
+</div>

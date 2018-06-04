@@ -1,0 +1,66 @@
+﻿@model InauVendingServer.Models.Supply
+@using InauVendingServer.Controllers
+
+<div class="modal fade" id="SupplyAddModals">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Criar Abastecimento para Produto na Máquina
+            </div>
+            <div class="modal-body">
+
+                <div>
+                    <form asp-action="Create">
+                        <div class="form-horizontal">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="ProductMachine.MachineId" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <p>@ViewData["MachineName"]</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ProductMachine.ProductId" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    @if (ViewContext.RouteData.Values["id"] == null)
+                                    {
+                                        <select asp-for="ProductMachineId" asp-items="ViewBag.ProductMachineId" class="form-control"></select>
+                                    }
+                                    else
+                                    {
+                                        <p>@ViewData["ProductName"]</p>
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="SupplyTime" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="SupplyTime" class="form-control date_time" />
+                                    <span asp-validation-for="SupplyTime" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="SupplyQty" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="SupplyQty" value="0" min="1" class="form-control" />
+                                    <span asp-validation-for="SupplyQty" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Criar" class="btn btn-default" />
+                                    <a data-dismiss="modal" class="btn btn-primary">Voltar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,51 @@
+﻿ @model InauVendingServer.Models.Product
+
+<div class="modal fade" id="ProductAddModals">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Cadastrar Produto
+            </div>
+            <div class="modal-body">
+                <form asp-action="Create">
+                    <div class="form-horizontal">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="ProductName" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <input asp-for="ProductName" class="form-control" />
+                                <span asp-validation-for="ProductName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ProductType" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <input asp-for="ProductType" class="form-control" />
+                                <span asp-validation-for="ProductType" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ProductImage" class="col-md-2 control-label"></label>
+                            <div class="col-md-10">
+                                <input asp-for="ProductImage" class="form-control" id="prodImage" />
+                                <span asp-validation-for="ProductImage" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div id="result"></div>
+                        <br />
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Criar" class="btn btn-default" />
+                                <a data-dismiss="modal" class="btn btn-primary">Voltar</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

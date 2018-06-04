@@ -1,0 +1,49 @@
+﻿@model InauVendingServer.Models.MachineMaintenance
+
+<div class="modal fade" id="MaintenanceDeleteModals">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Você tem certeza que deseja excluir esta Manutenção?
+            </div>
+            <div class="modal-body">
+                <div>
+                    <dl class="dl-horizontal">
+                        <input type="hidden" asp-for="MachineMaintenanceId" />
+                        <dt>
+                            @Html.DisplayNameFor(model => model.MaintenanceTime)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.MaintenanceTime)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.MaintenanceCost)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.MaintenanceCost)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Machine)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Machine.MachineAddress)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Maintenance)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Maintenance.MaintenanceType)
+                        </dd>
+                    </dl>
+
+                    <form asp-action="Delete">
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Excluir" class="btn btn-default" />
+                            <a data-dismiss="modal" class="btn btn-primary">Voltar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<InauVendingServer.Models.MachineSpot>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success" >Criar novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.MachineSpotStartTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MachineSpotEndTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MachineSpotName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MachineSpotAddress)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Machine)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MachineSpotStartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MachineSpotEndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MachineSpotName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MachineSpotAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Machine.MachineName)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-default" asp-route-id="@item.MachineSpotId">Editar</a>
+                <a asp-action="Details" class="btn btn-info"  asp-route-id="@item.MachineSpotId">Detalhes</a>
+                <a asp-action="Delete" class="btn btn-danger"  asp-route-id="@item.MachineSpotId">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

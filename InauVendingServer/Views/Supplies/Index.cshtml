@@ -1,0 +1,56 @@
+﻿@model IEnumerable<InauVendingServer.Models.Supply>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Cadastrar novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductMachine.Machine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductMachine.Product)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplyQty)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.SupplyTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductMachine.Machine)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductMachine.Product)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SupplyQty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SupplyTime)
+                </td>
+                <td>
+                    <a asp-action="Edit" class="btn btn-default" asp-route-id="@item.SupplyId">Editar</a>
+                    <a asp-action="Details" class="btn btn-info" asp-route-id="@item.SupplyId">Detalhes</a>
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.SupplyId">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

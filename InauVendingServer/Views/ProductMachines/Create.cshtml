@@ -1,0 +1,77 @@
+﻿@model InauVendingServer.Models.ProductMachine
+
+<div class="modal fade" id="ProductMachineAddModals">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Criar Produto para Máquina
+            </div>
+            <div class="modal-body">
+                <div>
+                    <form asp-action="Create">
+                        <div class="form-horizontal">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="ProductMachineQty" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="ProductMachineQty" type="number" value="0" min="1" class="form-control" />
+                                    <span asp-validation-for="ProductMachineQty" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ProductId" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <select asp-for="ProductId" asp-items="ViewBag.ProductId" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="MachineId" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    @if (ViewContext.RouteData.Values["id"] == null)
+                                    {
+                                        <select asp-for="MachineId" asp-items="ViewBag.MachineId" class="form-control"></select>
+                                    }
+                                    else
+                                    {
+                                        <p asp-for="MachineId">@ViewData["MachineName"]</p>
+                                    }
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ProductMachinePrice" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="ProductMachinePrice" class="form-control money" />
+                                    <span asp-validation-for="ProductMachinePrice" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ProductMachineIndex" class="col-md-2 control-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="ProductMachineIndex" class="form-control money" />
+                                    <span asp-validation-for="ProductMachineIndex" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Criar" class="btn btn-success" />
+                                    @if (ViewContext.RouteData.Values["id"] == null)
+                                    {
+                                        <a asp-action="Index" class="btn btn-primary">Voltar para lista</a>
+                                    }
+                                    else
+                                    {
+                                        <a data-dismiss="modal" class="btn btn-primary">Voltar</a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

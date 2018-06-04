@@ -1,0 +1,49 @@
+﻿@model InauVendingServer.Models.MachineSpot
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>MachineSpot</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineSpotStartTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MachineSpotStartTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineSpotEndTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MachineSpotEndTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineSpotName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MachineSpotName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineSpotAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MachineSpotAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Machine)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Machine.MachineAddress)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-default" asp-route-id="@Model.MachineSpotId">Editar</a>
+    <a asp-action="Index" class="btn btn-primary">Voltar para lista</a>
+</div>
