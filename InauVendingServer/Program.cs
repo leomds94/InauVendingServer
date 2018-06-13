@@ -12,6 +12,7 @@ namespace InauVendingServer
 {
     public class Program
     {
+        public static bool? state_machine;
         public static void Main(string[] args)
         {
             BuildWebHost(args).Run();

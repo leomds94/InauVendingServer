@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using InauVendingServer.Data;
 using InauVendingServer.Models;
-using Microsoft.AspNetCore.Http;
+using InauVendingServer.Models.Commands;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -40,7 +38,7 @@ namespace InauVendingServer.Controllers.API
                 });
             });
 
-            return new ObjectResult(productStocks);
+            return new ObjectResult(new Response(productStocks, true));
         }
     }
 }
